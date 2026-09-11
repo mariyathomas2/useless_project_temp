@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DON'T PRESS — അമർത്തരുത് 🚨</title>
+<meta name="description" content="ഒരു button. ഒരു warning. ഒരു മനുഷ്യൻ അത് കേൾക്കില്ല.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Anek+Malayalam:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#171313;--fg:#fafafa;--card:#272020;--muted:#b9aeae;--red:#e33428;
+  --red2:#ff5b48;--gold:#f4cf57;--siren:#ffb52e;--border:#514646;
+  --shadow:0 0 0 1px rgba(227,52,40,.45),0 0 30px rgba(227,52,40,.45),0 0 90px rgba(255,91,72,.25);
+}
+*{box-sizing:border-box;border-color:var(--border)}
+html,body{margin:0;min-height:100%;background:var(--bg);color:var(--fg)}
+body{
+  font-family:"Space Grotesk",system-ui,sans-serif;overflow-x:hidden;
+  background-image:radial-gradient(circle at 50% 0%,rgba(227,52,40,.22),transparent 60%),
+                   radial-gradient(circle at 10% 90%,rgba(227,52,40,.12),transparent 55%);
+  background-attachment:fixed;
+}
+button{font:inherit;cursor:pointer}
+.mal{font-family:"Anek Malayalam","Noto Sans Malayalam",system-ui,sans-serif;line-height:1.7}
+.screen{min-height:100vh;width:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px 20px;text-align:center}
+.landing{gap:28px}
+.eyebrow{font-size:10px;text-transform:uppercase;letter-spacing:.5em;color:var(--muted)}
+h1{margin:0}
+.hero-title{font-size:clamp(3rem,8vw,5.5rem);font-weight:800;letter-spacing:-.04em;text-shadow:0 0 18px rgba(255,91,72,.7)}
+.lead{max-width:680px;font-size:clamp(1.25rem,3vw,1.6rem);font-weight:700}
+.subtle{font-size:12px;text-transform:uppercase;letter-spacing:.25em;color:var(--muted)}
+.small{font-size:14px;color:var(--muted)}
+.neon{box-shadow:var(--shadow)}
+.press-wrap{position:relative;display:flex;align-items:center;justify-content:center;min-height:150px;width:100%}
+.press-btn{
+  border:0;border-radius:999px;background:linear-gradient(to bottom,var(--red2),var(--red));
+  color:white;font-weight:800;padding:17px 32px;text-transform:uppercase;letter-spacing:.08em;
+  transition:transform .3s ease,filter .2s;will-change:transform;
+}
+.press-btn:hover{filter:brightness(1.1)}
+.press-btn:active{transform:scale(.95)!important}
+.hero-btn{width:220px;height:220px;font-size:18px;animation:pulseGlow 2.2s ease-in-out infinite}
+.glass{
+  background:rgba(39,32,32,.72);backdrop-filter:blur(18px) saturate(140%);
+  border:1px solid rgba(255,255,255,.12);box-shadow:0 20px 60px -20px rgba(0,0,0,.7)
+}
+.card{width:100%;max-width:760px;border-radius:28px;padding:26px;text-align:center;position:relative;overflow:hidden;animation:rise .5s ease-out both}
+.grain:after{content:"";position:absolute;inset:0;pointer-events:none;opacity:.05;background-image:radial-gradient(#fff 1px,transparent 1px);background-size:4px 4px}
+.camera-card{max-width:720px}
+.camera-card h2{font-size:clamp(1.5rem,4vw,2rem);margin:10px 0}
+.camera-copy{text-align:left;color:var(--muted);font-size:14px;line-height:1.7}
+.video-box{position:relative;overflow:hidden;border-radius:18px;border:1px solid var(--border);margin-top:22px}
+video{display:block;width:100%;aspect-ratio:1;object-fit:cover;transform:scaleX(-1)}
+.scan{position:absolute;left:0;right:0;top:0;height:64px;background:linear-gradient(to bottom,rgba(227,52,40,.4),transparent);animation:scan 2.4s linear infinite}
+.row{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:20px}
+.secondary-btn,.outline-btn{
+  border:1px solid var(--border);border-radius:999px;background:transparent;color:var(--muted);padding:12px 24px
+}
+.primary-btn{border:0;border-radius:999px;background:var(--red);color:#fff;padding:12px 28px;font-weight:800;box-shadow:var(--shadow)}
+.photo{position:relative;overflow:hidden;border-radius:18px;border:1px solid var(--border);background:#302929;display:flex;align-items:center;justify-content:center;aspect-ratio:1;flex:none}
+.photo img{width:100%;height:100%;object-fit:cover}
+.photo img.zoom{animation:slowZoom 6s ease-in-out infinite alternate}
+.photo.shake{animation:shake .5s ease-in-out infinite}
+.photo.spotlight{box-shadow:var(--shadow)}
+.photo.spotlight:after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 35%,transparent 20%,rgba(0,0,0,.75) 75%)}
+.photo.tired img{filter:grayscale(.7) contrast(1.25) saturate(.5)}
+.avatar{font-size:46px;width:100%;height:100%;display:flex;align-items:center;justify-content:center}
+.meter{width:100%;max-width:520px;border-radius:18px;padding:16px;text-align:left}
+.meter-top{display:flex;justify-content:space-between;gap:12px;align-items:center}
+.meter-label{font-size:10px;text-transform:uppercase;letter-spacing:.28em;color:var(--muted)}
+.level{font-size:18px;font-weight:800}
+.count{font:700 26px monospace;color:var(--red2);text-shadow:0 0 18px rgba(255,91,72,.7)}
+.track{height:8px;background:#393030;border-radius:99px;overflow:hidden;margin-top:12px}
+.fill{height:100%;background:linear-gradient(90deg,var(--red),var(--red2));transition:width .7s ease}
+main.play{max-width:800px;margin:auto;padding:40px 20px;min-height:100vh}
+header{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:22px}
+.brand{font-size:20px;font-weight:800;letter-spacing:.15em}
+.counter{font:12px monospace;text-transform:uppercase;letter-spacing:.15em;color:var(--muted)}
+.sound{border:1px solid var(--border);background:transparent;color:var(--muted);border-radius:999px;padding:5px 11px}
+.filler{text-align:center;color:var(--muted);font-size:14px;margin:10px 0}
+.start-over{display:block;margin:5px auto 0;background:none;border:0;color:var(--muted);font-size:10px;text-transform:uppercase;letter-spacing:.3em;text-decoration:underline;text-underline-offset:4px}
+.stage-title{font-size:clamp(1.5rem,4vw,2rem);margin:0 0 20px}
+.bars{display:grid;gap:18px;text-align:left}
+.bar-line{display:grid;gap:6px}
+.bar-head{display:flex;justify-content:space-between;gap:10px;font-size:14px}
+.bar-head span:first-child{color:var(--muted)}
+.bar-track{height:8px;border-radius:99px;background:#393030;overflow:hidden}
+.bar-fill{height:100%;background:linear-gradient(90deg,var(--red),var(--red2));transition:width 1s}
+.bar-fill.loading{background:#aaa;animation:pulse 1s infinite}
+.grid-photo{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+.dupe{width:80px;height:80px}
+.final-screen{gap:24px}
+.confetti{pointer-events:none;position:fixed;inset:0;z-index:50;overflow:hidden}
+.confetti span{position:absolute;top:-20px;border-radius:2px;animation:confetti 3.2s linear forwards}
+.cert{border-color:rgba(244,207,87,.4)}
+.gold{color:var(--gold)}
+.alert{border-color:rgba(255,181,46,.5)}
+.red-text{color:var(--red2)}
+.police{text-align:left;border-color:rgba(255,181,46,.35)}
+.police-grid{display:grid;grid-template-columns:128px 1fr;gap:20px;align-items:start;margin-top:20px}
+dl{margin:0;display:grid;gap:9px}.police dd{margin:0;font-weight:700}.police dt{color:var(--muted);font-size:13px}
+@media(max-width:600px){header{align-items:flex-start}.brand{font-size:16px}.counter{font-size:10px}.police-grid{grid-template-columns:1fr}.card{padding:22px}.hero-btn{width:190px;height:190px}}
+@keyframes pulseGlow{0%,100%{transform:scale(1);box-shadow:0 0 0 0 rgba(227,52,40,.55),0 0 40px rgba(227,52,40,.45)}50%{transform:scale(1.04);box-shadow:0 0 0 28px rgba(227,52,40,0),0 0 80px rgba(255,91,72,.55)}}
+@keyframes rise{from{opacity:0;transform:translateY(15px)}to{opacity:1;transform:none}}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.25}}
+@keyframes shake{0%,100%{transform:translate(0)}25%{transform:translate(-4px,2px) rotate(-1deg)}75%{transform:translate(4px,-2px) rotate(1deg)}}
+@keyframes slowZoom{from{transform:scale(1)}to{transform:scale(1.12)}}
+@keyframes scan{from{transform:translateY(-20px)}to{transform:translateY(260px)}}
+@keyframes pulse{50%{opacity:.45}}
+@keyframes confetti{to{transform:translateY(110vh) rotate(720deg);opacity:0}}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<script>
+(function(){
+"use strict";
+const app=document.getElementById("app");
+let phase="landing",count=0,photo=null,muted=false,stream=null,audioCtx=null,master=null,timer=null,step=0;
+const FILLER=[
+"ഇത് എന്തിനാ വീണ്ടും അമർത്തുന്നത്? 🙄","ശരി... ഇനി ഞാനും കാണട്ടെ.",
+"നീ നിർത്താൻ ഉദ്ദേശിക്കുന്നില്ലല്ലേ?","വേറെ tab ഒന്നും ഇല്ലേ ചേട്ടാ/ചേച്ചീ?",
+"ഒന്നും സംഭവിക്കുന്നില്ല. നീ പിന്നെയും അമർത്തുന്നു. 💀","നീ ജയിച്ചു. Happy ആണോ?",
+"Loading... നിന്റെ ക്ഷമ. (found: 0)","എടാ/എടീ ഇതൊരു button ആണ്, ATM അല്ല."
+];
+const LEVELS=[[50,"🏆 LEGEND"],[41,"🚨 Critical"],[31,"💀 No Hope"],[21,"🤡 Certified"],[11,"😂 Getting Stupid"],[6,"🤨 Suspicious"],[0,"🙂 Innocent"]];
+function level(){return LEVELS.find(x=>count>=x[0])[1]}
+function esc(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+function photoHTML(cls="",label=""){return `<div class="photo ${cls}" style="width:160px;height:160px">${photo?`<img src="${photo}" alt="${esc(label||"Your session photo")}">`:`<div class="avatar">🫥</div>`}${label?`<figcaption style="position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,.7);font-size:10px;letter-spacing:.2em;padding:5px;text-transform:uppercase;color:#aaa">${esc(label)}</figcaption>`:""}</div>`}
+function card(inner,cls=""){return `<section class="card glass grain ${cls}">${inner}</section>`}
+function stagger(lines,delay=900){
+  return `<div class="stagger" data-delay="${delay}">${lines.map((x,i)=>`<p class="mal stagger-line" style="display:${i===0?"block":"none"};font-size:clamp(1.15rem,3vw,1.5rem);font-weight:700">${x}</p>`).join("")}</div>`;
+}
+function runStagger(){
+ document.querySelectorAll(".stagger").forEach(el=>{
+   const lines=[...el.querySelectorAll(".stagger-line")],d=+el.dataset.delay||900;
+   lines.forEach((x,i)=>setTimeout(()=>x.style.display="block",i*d));
+ });
+}
+function button(label,cls="",escapeLevel=0,id="press"){
+ return `<div class="press-wrap"><button id="${id}" class="press-btn ${cls}" data-escape="${escapeLevel}">${label}</button></div>`;
+}
+function render(){
+ if(phase==="landing"){app.innerHTML=`<main class="screen landing">
+  <p class="eyebrow">don't press</p><h1 class="hero-title">🚨 DO NOT PRESS</h1>
+  <p class="mal lead">ഈ button ഒരിക്കലും അമർത്തരുത്.</p>
+  <p class="subtle">Seriously. Don't. We are warning you.</p>
+  ${button("DO NOT PRESS","hero-btn",0,"hero")}
+  <p class="mal small">ഒരു button. ഒരു warning. ഒരു മനുഷ്യൻ അത് കേൾക്കില്ല.</p>
+ </main>`;document.getElementById("hero").onclick=()=>{phase="camera";render()};return}
+ if(phase==="camera"){renderCamera();return}
+ if(phase==="blackout"){app.innerHTML=`<main class="screen"><p class="mal" style="font-size:26px;animation:pulse 1s infinite">...</p></main>`;setTimeout(()=>{if(phase==="blackout"){phase="finale";render()}},2200);return}
+ if(phase==="finale"){app.innerHTML=`<main class="screen final-screen">
+   <div class="confetti">${Array.from({length:60},(_,i)=>`<span style="left:${(i*37)%100}%;width:${6+(i%4)*3}px;height:${10+(i%4)*5}px;background:${["#e33428","#f4cf57","#fff","#ffb52e"][i%4]};animation-delay:${(i%12)*.18}s"></span>`).join("")}</div>
+   ${photoHTML("spotlight","")}
+   <h1 class="hero-title" style="font-size:clamp(2rem,6vw,4rem);animation:blink .8s steps(2,end) infinite">🚨 CONGRATULATIONS 🚨</h1>
+   ${stagger(["നീ 50 തവണ button അമർത്തി.","പക്ഷേ...","ഒന്നും സംഭവിച്ചില്ല. 💀"],1400)}
+   <div class="glass" style="border-radius:28px;padding:24px"><p class="subtle gold">🏆 Achievement unlocked</p><p class="mal" style="font-size:20px;font-weight:800">വെറുതെ button അമർത്തിയ മനുഷ്യൻ</p></div>
+   <p class="mal small" style="max-width:520px">നിന്റെ ജീവിതത്തിലെ ഈ 2 മിനിറ്റ് ഇനി ഒരിക്കലും തിരിച്ചു കിട്ടില്ല. 😭</p>
+   ${button("FINAL PRESS","",1,"final")}
+ </main>`;document.getElementById("final").onclick=()=>{phase="thanks";render()};runStagger();return}
+ if(phase==="thanks"||phase==="again"){app.innerHTML=`<main class="screen" style="gap:24px">
+   ${stagger(["...","...","..."],600)}
+   <h1 class="hero-title" style="font-size:clamp(2rem,5vw,3rem)">Thanks for testing our website ❤️</h1>
+   <p class="subtle">You achieved absolutely nothing.</p>
+   ${phase==="again"?`<p class="mal" style="font-size:24px;font-weight:800">എടാ/എടീ... നീ ഇനിയും പോയില്ലേ? 💀</p>`:""}
+   <div class="row"><button id="again" class="primary-btn mal">PRESS AGAIN</button><button id="restart" class="outline-btn mal">Start Over</button></div>
+ </main>`;document.getElementById("again").onclick=()=>{phase="again";render()};document.getElementById("restart").onclick=restart;runStagger();return}
+ renderPlay();
+}
+function renderCamera(){
+ app.innerHTML=`<main class="screen"><section class="card glass grain camera-card">
+ <p class="eyebrow">Step 1 of 1</p><h2 class="mal">ഒരു second... ആദ്യം നിങ്ങളെ ഒന്ന് കാണട്ടെ 👀</h2>
+ ${photo?`<div style="margin-top:22px">${photoHTML("","")}<p class="mal" style="font-size:18px;font-weight:700">ആഹാ... perfect 😌</p><div class="row"><button id="continue" class="primary-btn mal">തുടരാം</button></div></div>`:
+ `<div id="cameraContent"><p class="camera-copy">We use your camera only to take <strong style="color:#fff">one funny photo</strong> for this joke. Nothing is secretly recorded, nothing is uploaded, and the photo stays in this browser session only. You press Capture yourself.</p>
+ <div id="cameraArea"></div><div class="row"><button id="openCam" class="primary-btn mal">ശരി, camera തുറക്ക്</button><button id="skip" class="outline-btn mal">Camera വേണ്ട</button></div></div>`}
+ </section></main>`;
+ if(photo){document.getElementById("continue").onclick=()=>{count=1;phase="play";render();playSpecial(1);};return}
+ document.getElementById("openCam").onclick=requestCamera;
+ document.getElementById("skip").onclick=()=>{count=1;phase="play";render();playSpecial(1)};
+}
+async function requestCamera(){
+ const area=document.getElementById("cameraArea"),btn=document.getElementById("openCam");
+ btn.disabled=true;btn.textContent="Camera ചോദിക്കുന്നു...";
+ try{
+  if(!navigator.mediaDevices||!navigator.mediaDevices.getUserMedia)throw new Error("unavailable");
+  stream=await navigator.mediaDevices.getUserMedia({video:{facingMode:"user",width:{ideal:1280},height:{ideal:720}},audio:false});
+  area.innerHTML=`<div class="video-box"><video id="video" autoplay muted playsinline></video><div class="scan"></div></div>
+   <div class="row"><button id="capture" class="primary-btn mal">📸 Capture</button><button id="skipLive" class="outline-btn mal">വേണ്ട, skip</button></div>`;
+  const video=document.getElementById("video");video.srcObject=stream;
+  document.getElementById("capture").onclick=capture;
+  document.getElementById("skipLive").onclick=()=>{stopCamera();count=1;phase="play";render();playSpecial(1)};
+ }catch(e){
+  area.innerHTML=`<div style="margin-top:18px;padding:20px;border:1px solid var(--border);border-radius:18px;background:#211c1c"><p class="mal" style="font-size:21px;font-weight:800">Camera പോലും പേടിച്ചു പോയി 😭</p><p class="mal small">സാരമില്ല. ഒരു avatar വെച്ച് നമുക്ക് തുടരാം.</p><button id="avatar" class="primary-btn mal">Avatar വെച്ച് തുടരാം</button></div>`;
+  document.getElementById("avatar").onclick=()=>{count=1;phase="play";render();playSpecial(1)};
+ }
+}
+function capture(){
+ const video=document.getElementById("video");if(!video||!video.videoWidth)return;
+ const size=Math.min(video.videoWidth,video.videoHeight),c=document.createElement("canvas");c.width=c.height=640;
+ const ctx=c.getContext("2d");ctx.translate(640,0);ctx.scale(-1,1);
+ ctx.drawImage(video,(video.videoWidth-size)/2,(video.videoHeight-size)/2,size,size,0,0,640,640);
+ photo=c.toDataURL("image/jpeg",.85);stopCamera();renderCamera();
+}
+function stopCamera(){if(stream){stream.getTracks().forEach(t=>t.stop());stream=null}}
+function restart(){stopCamera();count=0;photo=null;phase="landing";stopSound();render()}
+function renderPlay(){
+ const escape=count>=5?2:count>=3?1:0;
+ const label=count>=40?"PRESS":count>=25?"എന്നാലും അമർത്തും 😤":"ഒരിക്കൽ കൂടി അമർത്തുക";
+ let controls=count>=25&&count<30?`<div class="row"><button id="no" class="outline-btn mal">വേണ്ട</button><button id="yes" class="primary-btn mal">വേണം</button></div>`:`<p class="mal filler">${FILLER[count%FILLER.length]}</p>${button(label,"",escape,"press")}`;
+ app.innerHTML=`<main class="play"><header><h1 class="brand">DON'T PRESS</h1><div style="display:flex;align-items:center;gap:10px"><p class="counter">Button pressed: <span style="color:var(--red2)">${count}</span></p><button id="sound" class="sound" aria-label="Toggle sound">${muted?"🔇":"🔊"}</button></div></header>
+ <div class="meter glass"><div class="meter-top"><div><div class="meter-label">Troll level</div><div class="mal level">${level()}</div></div><div class="count">${count}</div></div><div class="track"><div class="fill" style="width:${Math.min(100,count/50*100)}%"></div></div></div>
+ <div id="stage" style="margin-top:22px">${stageHTML()}</div>${controls}
+ <button id="startOver" class="start-over">Start over</button></main>`;
+ document.getElementById("sound").onclick=()=>{muted=!muted;if(muted)stopSound();else startSound();renderPlay()};
+ document.getElementById("startOver").onclick=restart;
+ if(count>=25&&count<30){document.getElementById("no").onclick=press;document.getElementById("yes").onclick=press}
+ else{const b=document.getElementById("press");b.onmouseenter=()=>dodge(b,escape);b.onfocus=()=>dodge(b,escape);b.onclick=press}
+ runStagger();
+}
+function dodge(b,l){if(!l)return;const range=l===1?14:120;b.style.transform=`translate(${Math.round((Math.random()-.5)*range*2)}px,${Math.round((Math.random()-.5)*range)}px)`}
+function stageHTML(){
+ if(count>=40&&count<50)return card(`${photoHTML("tired")} ${stagger(["Honestly...","ഞാനും tired ആയി.","നീയും tired ആയില്ലേ?","ഇല്ലല്ലേ? 💀"],1100)}`,"");
+ if(count>=30)return card(`<div class="subtle" style="text-align:left;color:var(--siren)">Confidential</div><h2 class="stage-title" style="text-align:left">👮 POLICE CASE FILE</h2><div class="police-grid">${photoHTML("spotlight","Suspect")}<dl class="mal"><div><dt>Case</dt><dd>Repeated Button Pressing</dd></div><div><dt>Evidence</dt><dd>${count} clicks</dd></div><div><dt>Motive</dt><dd>അറിയില്ല</dd></div><div><dt>Regret</dt><dd class="red-text">0%</dd></div></dl></div><p class="mal" style="font-size:20px;font-weight:800;margin-top:24px">അവസാനമായി ചോദിക്കുകയാണ്... നിർത്തുമോ?</p>`,"police");
+ if(count>=20&&count<25)return card(`<div class="subtle gold">Official Certificate</div><h2 class="mal" style="font-size:clamp(1.5rem,4vw,2rem);color:var(--gold)">🏆 കേരള Button അമർത്തൽ Championship</h2><div class="subtle">Participant</div><div style="display:flex;justify-content:center;margin-top:10px">${photoHTML("","")}</div><div class="subtle" style="margin-top:20px">Achievement</div><p class="mal" style="font-size:18px;font-weight:700">“ഒന്നും സംഭവിക്കില്ലെന്ന് അറിഞ്ഞിട്ടും അമർത്തി.”</p>`,"cert");
+ if(count>=25)return card(`<h2 class="stage-title red-text" style="animation:blink .8s steps(2,end) infinite">🚨 EMERGENCY ALERT 🚨</h2><div style="display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap">${photoHTML("shake","")}<div class="mal" style="text-align:left;font-size:14px"><p>ഈ വ്യക്തി ${count} തവണ button അമർത്തിയിട്ടുണ്ട്.</p><p class="red-text" style="font-weight:800">Situation: OUT OF CONTROL</p></div></div><p class="mal" style="font-size:20px;font-weight:800;margin-top:22px">വീട്ടുകാരെ വിളിക്കണോ?</p><p class="mal small">(രണ്ടിലേതെങ്കിലും അമർത്തിയാൽ എന്തായാലും ഞാൻ വിളിക്കും 😌)</p>`,"alert");
+ if(count>=15)return card(`<div class="grid-photo">${[0,1,2,3,4].map(i=>photoHTML(i%2?"shake":"")).join("")}</div>${stagger(["ഇവൻ...","...ഇത്...","...നിർത്താൻ പോകുന്നില്ല.","നിനക്ക് പറഞ്ഞാൽ കേൾക്കില്ലല്ലേ? 😭"],750)}`);
+ if(count>=10)return card(`<h2 class="stage-title">Personality Analysis Complete</h2><div style="display:grid;grid-template-columns:160px 1fr;gap:24px;text-align:left;align-items:start">${photoHTML("zoom","Subject")}<div class="bars">${bar("Patience",2)}${bar("Curiosity",98)}${bar("Common Sense","Loading...",true)}${bar("Button Addiction",100)}</div></div><p class="mal" style="font-size:18px;font-weight:700;text-align:center;margin-top:22px">നിന്നെക്കുറിച്ച് ഞങ്ങൾക്ക് ഇപ്പോൾ നല്ലൊരു idea കിട്ടി.</p>`);
+ if(count>=5)return card(`<div class="subtle gold">Badge unlocked</div><h2 style="font-size:clamp(1.5rem,4vw,2rem);color:var(--gold)">🏆 CERTIFIED BUTTON PRESSER</h2><div style="display:flex;justify-content:center;margin-top:16px">${photoHTML("","")}</div><p class="mal" style="font-size:18px;font-weight:700">${count} തവണ അമർത്തി. നിനക്ക് വേറെ പണിയൊന്നുമില്ലേ? 😂</p>`);
+ if(count>=3)return card(`${photoHTML("zoom")}<p class="mal" style="font-size:24px;font-weight:800">എടാ... പറഞ്ഞില്ലേ അമർത്തരുതെന്ന് 😭</p><p class="subtle" style="color:var(--siren)">🟡 Warning issued</p>`);
+ return card(`${photoHTML("")}<p class="mal" style="font-size:24px;font-weight:800">ആഹാ... നീയാണല്ലേ 👀</p><p class="subtle" style="color:var(--red2)">🟢 Still innocent</p>`);
+}
+function bar(label,value,loading=false){const pct=typeof value==="number"?value:40;return `<div class="bar-line"><div class="bar-head"><span class="mal">${label}</span><strong>${typeof value==="number"?value+"%":value}</strong></div><div class="bar-track"><div class="bar-fill ${loading?"loading":""}" style="width:${pct}%"></div></div></div>`}
+function press(){
+ const next=count+1;count=next;
+ if(next>=50){stopSound();phase="blackout";render();playSpecial(50);return}
+ render();playSpecial(next);if(!muted)startSound();
+}
+function playSpecial(n){
+ if(muted)return;
+ const map={1:["ആഹാ... നീയാണല്ലേ..."],3:["എടാ... പറഞ്ഞില്ലേ അമർത്തരുതെന്ന്!"],5:["നിനക്ക് വേറെ പണിയൊന്നുമില്ലേ?"],10:["Analysis complete. Common sense... കണ്ടെത്താൻ കഴിഞ്ഞില്ല."],15:["ഇവൻ... നിർത്താൻ പോകുന്നില്ല."],20:["അഭിനന്ദനങ്ങൾ! കേരള Button Pressing Championship-ന്റെ പുതിയ champion!"],25:["ശ്രദ്ധിക്കുക! ഈ വ്യക്തി ഇരുപത്തഞ്ച് തവണ button അമർത്തിയിരിക്കുന്നു!"],30:["Suspect identified. Evidence collected. Motive... ഇപ്പോഴും unknown."],40:["സത്യത്തിൽ... ഞാനും tired ആയി."]};
+ if(n===50){speak("Congratulations... നീ അമ്പത് തവണ button അമർത്തി...",()=>setTimeout(()=>speak("പക്ഷേ... ഒന്നും സംഭവിച്ചില്ല.",null),2000));return}
+ if(map[n]){stopSound();speak(map[n][0],()=>{if(phase==="play"&&!muted)startSound()})}
+}
+function speak(text,onEnd){
+ if(!("speechSynthesis" in window)){if(onEnd)onEnd();return}
+ stopSound();speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(text);u.lang="ml-IN";u.rate=.9;u.pitch=1;u.volume=.9;u.onend=()=>onEnd&&onEnd();speechSynthesis.speak(u);
+}
+function startSound(){
+ if(muted||phase!=="play")return;
+ if(!audioCtx){audioCtx=new (window.AudioContext||window.webkitAudioContext)();master=audioCtx.createGain();master.gain.value=.0001;master.connect(audioCtx.destination)}
+ audioCtx.resume();if(timer)return;
+ const schedule=()=>{const intensity=Math.min(1,count/50),t=audioCtx.currentTime;master.gain.setTargetAtTime(.06+intensity*.34,t,.4);const s=step++;hit(110-intensity*30,.22+intensity*.1,.9,"sine");if(intensity>.25&&s%2===1)hit(320,.09,.45,"triangle");if(intensity>.5&&s%4===2)hit(680,.06,.3,"square");if(intensity>.8)hit(1400,.04,.18,"square")};
+ schedule();const bpm=84+Math.min(1,count/50)*96;timer=setInterval(schedule,Math.round(60000/bpm))
+}
+function hit(freq,dur,vol,type){if(!audioCtx||!master)return;const t=audioCtx.currentTime,o=audioCtx.createOscillator(),g=audioCtx.createGain();o.type=type;o.frequency.setValueAtTime(freq,t);o.frequency.exponentialRampToValueAtTime(Math.max(40,freq*.55),t+dur);g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(vol,t+.008);g.gain.exponentialRampToValueAtTime(.0001,t+dur);o.connect(g).connect(master);o.start(t);o.stop(t+dur+.02)}
+function stopSound(){if(timer){clearInterval(timer);timer=null}if(audioCtx&&master)master.gain.setTargetAtTime(.0001,audioCtx.currentTime,.08);if("speechSynthesis"in window)speechSynthesis.cancel()}
+render();
+})();
+</script>
+</body>
+</html>
