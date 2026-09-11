@@ -162,7 +162,7 @@ Check Click Count
 
 # Video
 
-[Add your demo video link here]
+https://drive.google.com/drive/folders/1C7EkG-i70yoW-4IH_P6gO5WE5IEeWlUy?usp=sharing
 
 *The demo demonstrates the complete DON’T PRESS experience, including the button interactions, camera feature, Malayalam trolling, animations, audio effects, progressive stages, and final 50-click achievement.*
 
